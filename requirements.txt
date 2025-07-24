@@ -16,3 +16,7 @@ matplotlib
 python-dotenv
 joblib
 tree
+
+# testing 
+pytest
+pytest-cov
