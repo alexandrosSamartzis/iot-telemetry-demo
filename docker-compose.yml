@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  iot-app:
+    build: .
+    volumes:
+      - .:/app
+    depends_on:
+      - mqtt-broker
+    networks:
+      - iot-net
+    # You’ll override CMD or entrypoint later to run send.py or recv.py
+
+  mqtt-broker:
+    image: eclipse-mosquitto:latest
+    ports:
+      - "1883:1883"
+    networks:
+      - iot-net
+
+networks:
+  iot-net:
+    driver: bridge
