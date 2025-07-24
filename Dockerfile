@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Set default command (optional)
-CMD ["bash"]
+CMD ["sleep", "infinity"]
