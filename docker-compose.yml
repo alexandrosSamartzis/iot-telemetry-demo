@@ -2,11 +2,15 @@ version: '3.8'
 
 services:
   iot-app:
-    build: .
+    container_name: iot-devops-app
+    build:
+      context: .           
+      dockerfile: Dockerfile
     volumes:
       - .:/app
     depends_on:
       - mqtt-broker
+    working_dir: /app
     networks:
       - iot-net
     # You’ll override CMD or entrypoint later to run send.py or recv.py
@@ -15,6 +19,9 @@ services:
     image: eclipse-mosquitto:latest
     ports:
       - "1883:1883"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
     networks:
       - iot-net
 
