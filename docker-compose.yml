@@ -1,24 +1,35 @@
+# version of Docker Compose file
+# This file defines the services, networks, and volumes for the IoT application
 version: '3.8'
 
+# Define the services for the IoT application
 services:
+  # The main application service
   iot-app:
     container_name: iot-devops-app
+    # Build the application from the Dockerfile in the current directory local
     build:
       context: .           
       dockerfile: Dockerfile
+    # Copy the local directory to the lcoal dir of container and vice versa
+    # This allows for live code updates during development
     volumes:
       - .:/app
+    # Dependency on the MQTT broker service
     depends_on:
       - mqtt-broker
+    # my docker directory
     working_dir: /app
+    # Bridge the broker with app
     networks:
       - iot-net
-    # You’ll override CMD or entrypoint later to run send.py or recv.py
 
   mqtt-broker:
     image: eclipse-mosquitto:latest
+    # Use the official Eclipse Mosquitto image
     ports:
       - "1883:1883"
+    # configuration for the MQTT broker
     volumes:
       - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
       - ./mosquitto/data:/mosquitto/data

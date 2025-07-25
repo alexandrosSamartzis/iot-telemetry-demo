@@ -22,7 +22,16 @@ Source: [Smart Manufacturing IoT-Cloud Monitoring Dataset (Kaggle)]
 - Readings include: temperature, vibration, humidity, pressure, and energy
 - Timestamps at 1-minute intervals
 - Flags for anomalies and machine failures
-- Target column: `maintenance_required` (0 or 1)
+- Target column for ML if needed: `maintenance_required` (0 or 1)
+
+-- Further Details
+
+-- Machine Status – Indicates whether the machine is Idle, Running, or in Failure
+-- Anomaly Flags – Identifies extreme values in temperature and vibration
+-- Predicted Remaining Life – Estimated time before maintenance is needed
+-- Failure Type – The reason for machine failure (e.g., Overheating, Vibration Issue)
+-- Downtime Risk Score – Probability of machine breakdown
+
 
 This dataset is well-suited for building predictive maintenance pipelines, real-time dashboards, and cloud-based IoT systems.
 
@@ -31,8 +40,8 @@ This dataset is well-suited for building predictive maintenance pipelines, real-
 | Phase                 | Deliverables                                |
 |----------------------|---------------------------------------------|
 | ✅ Environment Setup  | Conda/Docker environment + GitHub repo      |
-| ⬜ EDA                | Basic plots, null checks, class balance     |
-| ⬜ MQTT Simulation    | Row-by-row publisher / subscriber pair      |
+| ✅ EDA                | Basic plots, null checks, class balance     |
+| ✅ MQTT Simulation    | Row-by-row publisher / subscriber pair      |
 | ⬜ Monitoring UI      | Grafana Cloud panel or Streamlit frontend   |
 | ⬜ FastAPI Service    | Containerized model or rule-based alert API |
 | ⬜ Architecture Notes | Short .md and system diagram                |
