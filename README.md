@@ -46,9 +46,22 @@ This dataset is well-suited for building predictive maintenance pipelines, real-
 | ⬜ FastAPI Service    | Containerized model or rule-based alert API |
 | ⬜ Architecture Notes | Short .md and system diagram                |
 
-## 🚧 Status
+## 🚧 Launch
 
-Day 1: Initial environment and repo structure complete. Exploratory analysis in progress.
+1. Build Docker Images             ---->  docker compose build
+This step builds both:
+	•	The Python App container (send + receive)
+	•	The Mosquitto MQTT broker
+2. Launch the Containers           ----> docker compose up
+   	•	Starts two containers: the app and the broker
+	•	Mounts necessary configs and ports
+	•	Connects them via a shared network
+3. Access the Running Containers   ----> docker exec -it iot-devops-app bash
+    (if you want to coinfirm the existance of images ---> docker ps)
+4. run the send data and recv data ----> python mqtt_sim/send.py
+                                   ----> python mqtt_sim/recv.py
+
+
 
 ## ⚠️ Disclaimer
 
