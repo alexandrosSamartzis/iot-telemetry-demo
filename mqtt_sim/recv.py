@@ -16,7 +16,12 @@ def on_connect(client, userdata, flags, rc):
 # --- Callback when message is received ---
 def on_message(client, userdata, msg):
     payload = json.loads(msg.payload.decode())
-    print(f"Received from {msg.topic}: {payload}")
+    topic = msg.topic
+    #print(f"Received from {msg.topic}: {payload}")
+    if payload["maintenance_required"] == 1:
+        print(topic)
+        print("⚠️⚠️⚠️⚠️  Maintenance needed for Machine", payload["machine_id"])
+
 
 # --- Setup and start client ---
 client = mqtt.Client()

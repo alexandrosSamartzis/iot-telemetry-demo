@@ -27,6 +27,7 @@ for _, row in df.iterrows():
     client.publish(topic, payload)
     
     # Optional: Print for debugging
+   
     print(f"Sent to {topic}: {payload}")
     
     # Simulate real-time (2 messages per second)
